@@ -153,3 +153,6 @@ dmypy.json
 
 
 Pipfile*
+.vscode
+.DS_Store
+Rare DB.session.sql
