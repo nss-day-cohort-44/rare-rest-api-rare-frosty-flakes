@@ -153,3 +153,5 @@ dmypy.json
 
 
 Pipfile*
+
+.DS_Store

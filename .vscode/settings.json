@@ -3,9 +3,10 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-            "name": "Rare DB",
+            "name": "DB Rare",
             "database": "db.sqlite3"
         }
     ],
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/Users/jaronlane/.local/share/virtualenvs/rare-rest-api-rare-frosty-flakes-OECBxhi4/bin/python"
 }
