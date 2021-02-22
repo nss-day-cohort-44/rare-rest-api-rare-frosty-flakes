@@ -1,8 +1,10 @@
 from django.http import HttpResponseServerError
+from django.core.exceptions import ValidationError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from rareapi.models import Category
+from rest_framework import status
+from rareapi.models import Category, category
 
 
 class Categories(ViewSet):
@@ -35,6 +37,19 @@ class Categories(ViewSet):
         serializer = CategorySerializer(
             categories, many=True, context={'request': request})
         return Response(serializer.data)
+
+    def destroy(self, request, pk = None):
+        try:
+            category = Category.objects.get(pk=pk)
+            category.delete()
+
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
+            
+        except Category.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+
 
 class CategorySerializer(serializers.ModelSerializer):
     """JSON serializer for game types
