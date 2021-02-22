@@ -1,3 +1,7 @@
+// Created By: Jayna Leitze
+// Date: 2/22/21
+//Subject: Seed Data
+
 [
   {
     "model": "rareapi.category",
