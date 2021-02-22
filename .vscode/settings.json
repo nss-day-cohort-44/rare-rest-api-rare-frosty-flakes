@@ -1,0 +1,12 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+
+            "name": "rare.db",
+            "database": "db.sqlite3"
+        }
+    ],
+    "python.linting.pylintEnabled": true
+}
