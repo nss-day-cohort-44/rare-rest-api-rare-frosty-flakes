@@ -4,6 +4,8 @@ from rareapi.views import register_user, login_user
 from rest_framework import routers
 from rareapi.views import Categories
 
+
+
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'categories',Categories, 'category')
 urlpatterns = [
