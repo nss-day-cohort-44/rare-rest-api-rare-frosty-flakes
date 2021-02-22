@@ -3,16 +3,10 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-<<<<<<< HEAD
+
             "name": "rare.db",
-            "database": "db.sqlite3"
-        }
-    ]
-=======
-            "name": "Rare DB",
             "database": "db.sqlite3"
         }
     ],
     "python.linting.pylintEnabled": true
->>>>>>> main
 }
