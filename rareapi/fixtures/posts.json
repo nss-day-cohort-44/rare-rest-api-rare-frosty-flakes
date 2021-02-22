@@ -1,0 +1,19 @@
+[
+    {
+        "model": "rareapi.post",
+        "pk": 1,
+        "fields": {
+            "last_login": null,
+            "is_superuser": false,
+            "username": "me@me.com",
+            "first_name": "Steve",
+            "last_name": "Brownlee",
+            "email": "me@me.com",
+            "is_staff": false,
+            "is_active": true,
+            "date_joined": "2020-08-28T14:51:39.989Z",
+            "groups": [],
+            "user_permissions": []
+        }
+    }
+]
