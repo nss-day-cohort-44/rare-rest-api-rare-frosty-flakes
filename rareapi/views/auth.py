@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 from rest_framework.authtoken.models import Token
 from django.views.decorators.csrf import csrf_exempt
 from rareapi.models import RareUser
+import datetime
 
 
 @csrf_exempt
@@ -60,10 +61,10 @@ def register_user(request):
 
     # Now save the extra info in the rareapi table
     rare_user = RareUser.objects.create(
-        bio=['bio'],
-        profile_image_url=['profileImageUrl'],
-        created_on=['createdOn'],
-        active=['active'],
+        bio=req_body['bio'],
+        profile_image_url=req_body['profile_image_url'],
+        created_on=datetime.datetime.now(),
+        active=req_body['active'],
         user=new_user
     )
 
