@@ -156,3 +156,6 @@ Pipfile*
 .vscode
 .DS_Store
 Rare DB.session.sql
+
+/.vscode
+*.vscode
