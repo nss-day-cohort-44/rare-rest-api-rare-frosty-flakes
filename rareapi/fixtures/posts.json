@@ -3,17 +3,13 @@
         "model": "rareapi.post",
         "pk": 1,
         "fields": {
-            "last_login": null,
-            "is_superuser": false,
-            "username": "me@me.com",
-            "first_name": "Steve",
-            "last_name": "Brownlee",
-            "email": "me@me.com",
-            "is_staff": false,
-            "is_active": true,
-            "date_joined": "2020-08-28T14:51:39.989Z",
-            "groups": [],
-            "user_permissions": []
+            "user": 1,
+            "category": 1,
+            "title": "Amazing Post",
+            "publication_date": "2020-08-29T13:24:27.172Z",
+            "image_url": "https://miro.medium.com/max/700/1*7cX4v8wrkyJ3psvTUzv1Mw.jpeg",
+            "content": "This is a very short post!",
+            "approved": true
         }
     }
 ]
