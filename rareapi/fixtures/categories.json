@@ -1,0 +1,44 @@
+[
+  {
+    "model": "rareapi.category",
+    "pk": 1,
+    "fields": {
+      "label": "Opinion"
+    }
+  },
+  {
+    "model": "rareapi.category",
+    "pk": 2,
+    "fields": {
+      "label": "Exposé"
+    }
+  },
+  {
+    "model": "rareapi.category",
+    "pk": 3,
+    "fields": {
+      "label": "Scranton News"
+    }
+  },
+  {
+    "model": "rareapi.category",
+    "pk": 4,
+    "fields": {
+      "label": "Bears"
+    }
+  },
+  {
+    "model": "rareapi.category",
+    "pk": 5,
+    "fields": {
+      "label": "Beets"
+    }
+  },
+  {
+    "model": "rareapi.category",
+    "pk": 6,
+    "fields": {
+      "label": "Battlestar Galactica"
+    }
+  }
+]
