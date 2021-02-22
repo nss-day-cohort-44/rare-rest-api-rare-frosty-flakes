@@ -1,6 +1,6 @@
 # AUTHOR: JARON LANE
 
-"""View module for handling requests about events"""
+"""View module for handling requests about posts"""
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -9,12 +9,11 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from levelupapi.models import Game, Event, Gamer
-from levelupapi.views.game import GameSerializer
+from rareapi.models import Post, Category, RareUser
 
 
-class Events(ViewSet):
-    """Level up events"""
+class Posts(ViewSet):
+    """Rare posts"""
 
     def create(self, request):
         """Handle POST operations for events
@@ -22,19 +21,21 @@ class Events(ViewSet):
         Returns:
             Response -- JSON serialized event instance
         """
-        scheduler = Gamer.objects.get(user=request.auth.user)
+        user = RareUser.objects.get(user=request.auth.user)
+        category = Category.objects.get(pk=request.data["categoryId"])
 
-        event = Event()
-        event.game = request.data["game"]
-        event.location = request.data["location"]
-        event.event_time = request.data["eventTime"]
-        event.scheduler = scheduler
+        post = Post()
+        post.user = scheduler
+        post.category = category
+        post.title = request.data["title"]
+        post.publication_date = request.data["publicationDate"]
+        post.image_url = request.data["image_url"]
+        post.content = request.data["content"]
+        post.approved = 
 
-        game = Game.objects.get(pk=request.data["gameId"])
-        event.game = game
 
         try:
-            event.save()
+            post.save()
             serializer = EventSerializer(event, context={'request': request})
             return Response(serializer.data)
         except ValidationError as ex:
