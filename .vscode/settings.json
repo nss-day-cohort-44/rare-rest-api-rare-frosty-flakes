@@ -7,5 +7,6 @@
             "database": "db.sqlite3"
         }
     ],
-    "python.linting.pylintEnabled": true
+    "python.linting.pylintEnabled": true,
+    "python.pythonPath": "/Users/jakebutler/.local/share/virtualenvs/frosty-flakes-rare-server-iLoNmMeg/bin/python"
 }
