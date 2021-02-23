@@ -1,3 +1,9 @@
+""" 
+Created By: Danny McCracken
+Date: 2/22/21
+Subject: Defines server response for each comment
+"""
+
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.http import HttpResponseServerError
@@ -107,29 +113,30 @@ class Comments(ViewSet):
             comments, many=True, context={'request': request})
         return Response(serializer.data)
 
-class CommentUserSerializer(serializers.ModelSerializer):
-    """JSON serializer for event organizer's related Django user"""
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'email']
+# class CommentUserSerializer(serializers.ModelSerializer):
+#     """JSON serializer for event organizer's related Django user"""
+#     class Meta:
+#         model = User
+#         fields = ['username']
 
-class CommentRareUserSerializer(serializers.ModelSerializer):
-    """JSON serializer for event organizer"""
-    user = CommentUserSerializer(many=False)
+# class CommentRareUserSerializer(serializers.ModelSerializer):
+#     """JSON serializer for event organizer"""
+#     user = CommentUserSerializer(many=False)
 
-    class Meta:
-        model = RareUser
-        fields = ['user']
+#     class Meta:
+#         model = RareUser
+#         fields = ['user']
 
-class PostSerializer(serializers.ModelSerializer):
-    """JSON serializer for posts"""
+# class PostSerializer(serializers.ModelSerializer):
+#     """JSON serializer for posts"""
     
-    class Meta:
-        model = Post
-        fields = ('id',)
+#     class Meta:
+#         model = Post
+#         fields = ('id',)
 
 class CommentSerializer(serializers.ModelSerializer):
-    """JSON serializer for games"""
+    """JSON serializer for comments"""
     class Meta:
         model = Comment
         fields = ('id', 'post_id', 'author_id', 'content', 'created_on')
+        depth = 1

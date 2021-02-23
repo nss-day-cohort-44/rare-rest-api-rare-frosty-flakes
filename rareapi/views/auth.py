@@ -13,7 +13,7 @@ def login_user(request):
     '''Handles the authentication of a RareUser
 
     Method arguments:
-      request -- The full HTTP request object
+    request -- The full HTTP request object
     '''
 
     req_body = json.loads(request.body.decode())
