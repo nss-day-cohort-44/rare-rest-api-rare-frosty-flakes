@@ -103,3 +103,14 @@ class Posts(ViewSet):
         serializer = PostSerializer(
             posts, many=True, context={'request': request})
         return Response(serializer.data)
+
+class PostSerializer(serializers.ModelSerializer):
+    """JSON serializer for posts
+
+    Arguments:
+        serializer type
+    """
+    class Meta:
+        model = Post
+        fields = ('id', 'user', 'category', 'title', 'publication_date', 'image_url', 'content')
+        depth = 2
