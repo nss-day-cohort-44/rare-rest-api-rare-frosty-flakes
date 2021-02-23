@@ -55,25 +55,28 @@ class Posts(ViewSet):
     #     except Exception:
     #         return HttpResponseServerError(ex)
 
-    # def update(self, request, pk=None):
-    #     """Handle PUT requests for an event
+    def update(self, request, pk=None):
+        """Handle PUT requests for an event
 
-    #     Returns:
-    #         Response -- Empty body with 204 status code
-    #     """
-    #     scheduler = Gamer.objects.get(user=request.auth.user)
+        Returns:
+            Response -- Empty body with 204 status code
+        """
+        user = RareUser.objects.get(user=request.auth.user)
+        category = Category.objects.get(pk=request.data["categoryId"])
 
-    #     event = Event.objects.get(pk=pk)
-    #     event.game = request.data["game"]
-    #     event.location = request.data["location"]
-    #     event.event_time = request.data["eventTime"]
-    #     event.scheduler = scheduler
+        post = Post.objects.get(pk=pk)
+        post.user = user
+        post.category = category
+        post.title = request.data["title"]
+        post.publication_date = request.data["publication_date"]
+        post.image_url = request.data["image_url"]
+        post.content = request.data["content"]
+        post.approved = request.data["approved"]
+        
+        post.save()
 
-    #     game = Game.objects.get(pk=request.data["gameId"])
-    #     event.game = game
-    #     event.save()
-
-    #     return Response({}, status=status.HTTP_204_NO_CONTENT)
+        return Response({}, status=status.HTTP_204_NO_CONTENT)
+        
 
     # def destroy(self, request, pk=None):
     #     """Handle DELETE requests for a single game
