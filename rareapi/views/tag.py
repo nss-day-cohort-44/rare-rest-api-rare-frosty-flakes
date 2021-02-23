@@ -52,7 +52,7 @@ class Tags(ViewSet):
         Returns:
             Response -- JSON serialized list of tags
         """
-        tags = Tag.objects.all()
+        tags = Tag.objects.all().order_by('label')
 
         # Note the addtional `many=True` argument to the
         # serializer. It's needed when you are serializing
