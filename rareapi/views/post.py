@@ -10,6 +10,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
 from rareapi.models import Post, Category, RareUser
+import datetime
 
 
 class Posts(ViewSet):
@@ -22,14 +23,14 @@ class Posts(ViewSet):
             Response -- JSON serialized event instance
         """
         user = RareUser.objects.get(user=request.auth.user)
-        category = Category.objects.get(pk=request.data["categoryId"])
+        category = Category.objects.get(pk=request.data["category_id"])
         
 
         post = Post()
         post.user = user
         post.category = category
         post.title = request.data["title"]
-        post.publication_date = request.data["publication_date"]
+        post.publication_date = datetime.datetime.now()
         post.image_url = request.data["image_url"]
         post.content = request.data["content"]
         post.approved = request.data["approved"]
