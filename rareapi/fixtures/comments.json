@@ -1,0 +1,42 @@
+[
+    {
+    "model": "rareapi.comment",
+    "pk": 1,
+    "fields": {
+        "post_id": ,
+        "author_id": ,
+        "content": "comment 1",
+        "created_on": 
+        }
+    },
+    {
+    "model": "rareapi.comment",
+    "pk": 2,
+    "fields": {
+        "post_id": ,
+        "author_id": ,
+        "content": "comment 2",
+        "created_on": 
+        }
+    },
+    {
+    "model": "rareapi.comment",
+    "pk": 3,
+    "fields": {
+        "post_id": ,
+        "author_id": ,
+        "content": "comment 3",
+        "created_on": 
+        }
+    },
+    {
+    "model": "rareapi.comment",
+    "pk": 4,
+    "fields": {
+        "post_id": ,
+        "author_id": ,
+        "content": "comment 4",
+        "created_on":
+        }
+    }
+]  
