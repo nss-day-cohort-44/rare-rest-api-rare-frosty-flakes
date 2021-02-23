@@ -8,4 +8,5 @@ python manage.py loaddata users
 python manage.py loaddata tokens
 python manage.py loaddata categories
 python manage.py loaddata rareusers
+python manage.py loaddata posts
 python manage.py loaddata tags

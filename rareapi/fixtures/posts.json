@@ -1,0 +1,28 @@
+[
+    {
+        "model": "rareapi.post",
+        "pk": 1,
+        "fields": {
+            "user": 1,
+            "category": 1,
+            "title": "Amazing Post",
+            "publication_date": "2020-08-29T13:24:27.172Z",
+            "image_url": "https://miro.medium.com/max/700/1*7cX4v8wrkyJ3psvTUzv1Mw.jpeg",
+            "content": "This is a very short post!",
+            "approved": true
+        }
+    },
+    {
+        "model": "rareapi.post",
+        "pk": 2,
+        "fields": {
+            "user": 1,
+            "category": 2,
+            "title": "Even Better Post",
+            "publication_date": "2020-07-19T13:24:27.172Z",
+            "image_url": "https://miro.medium.com/max/700/1*7cX4v8wrkyJ3psvTUzv1Mw.jpeg",
+            "content": "This is a slighlty longer post!",
+            "approved": true
+        }
+    }
+]

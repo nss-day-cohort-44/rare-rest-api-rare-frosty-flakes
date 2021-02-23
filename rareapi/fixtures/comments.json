@@ -3,40 +3,40 @@
     "model": "rareapi.comment",
     "pk": 1,
     "fields": {
-        "post_id": ,
-        "author_id": ,
+        "post_id": 1,
+        "author_id": 1,
         "content": "comment 1",
-        "created_on": 
+        "created_on": "2020-08-29T13:24:27.172Z"
         }
     },
     {
     "model": "rareapi.comment",
     "pk": 2,
     "fields": {
-        "post_id": ,
-        "author_id": ,
+        "post_id": 1,
+        "author_id": 1,
         "content": "comment 2",
-        "created_on": 
+        "created_on": "2020-09-29T13:24:27.172Z"
         }
     },
     {
     "model": "rareapi.comment",
     "pk": 3,
     "fields": {
-        "post_id": ,
-        "author_id": ,
+        "post_id": 2,
+        "author_id": 1,
         "content": "comment 3",
-        "created_on": 
+        "created_on": "2020-07-19T13:24:27.172Z"
         }
     },
     {
     "model": "rareapi.comment",
     "pk": 4,
     "fields": {
-        "post_id": ,
-        "author_id": ,
+        "post_id": 2,
+        "author_id": 1,
         "content": "comment 4",
-        "created_on":
+        "created_on": "2020-010-19T13:24:27.172Z"
         }
     }
 ]  
