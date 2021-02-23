@@ -23,6 +23,7 @@ class Posts(ViewSet):
         """
         user = RareUser.objects.get(user=request.auth.user)
         category = Category.objects.get(pk=request.data["categoryId"])
+        
 
         post = Post()
         post.user = user
@@ -98,7 +99,7 @@ class Posts(ViewSet):
         Returns:
             Response -- JSON serialized list of posts
         """
-        posts = Post.objects.all()
+        posts = Post.objects.all().order_by('-publication_date')
 
         serializer = PostSerializer(
             posts, many=True, context={'request': request})
@@ -113,4 +114,4 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ('id', 'user',  'category', 'title', 'publication_date', 'image_url', 'content')
-        depth = 1
+        depth = 2
