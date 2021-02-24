@@ -12,7 +12,7 @@ from rest_framework.decorators import action
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers
-from rareapi.models import Comment, RareUser
+from rareapi.models import Comment, RareUser, Post
 import datetime
 
 class Comments(ViewSet):
@@ -26,11 +26,11 @@ class Comments(ViewSet):
 
         author = RareUser.objects.get(user=request.auth.user)
 
-        post = Post.objects.get(pk=request.data["postId"])
+        post = Post.objects.get(pk=request.data["post_id"])
 
         comment = Comment()
-        comment.post_id= post
-        comment.author_id= author
+        comment.post= post
+        comment.author= author
         comment.content = request.data["content"]
         comment.created_on = datetime.datetime.now()
 
@@ -62,11 +62,11 @@ class Comments(ViewSet):
         """
         author = RareUser.objects.get(user=request.auth.user)
 
-        post = Post.objects.get(pk=request.data["postId"])
+        post = Post.objects.get(pk=request.data["post_id"])
 
         comment = Comment.objects.get(pk=pk)
-        comment.post_id= post
-        comment.author_id= author
+        comment.post= post
+        comment.author= author
         comment.content = request.data["content"]
         comment.created_on = datetime.datetime.now()
 
@@ -102,12 +102,12 @@ class Comments(ViewSet):
         comments = Comment.objects.all()
 
         # Support filtering comments by type
-        #    http://localhost:8000/comments?post=1
+        #    http://localhost:8000/comments?post_id=1
         #
         # That URL will retrieve all a post's comments
-        post_id = self.request.query_params.get('post', None)
-        if post_id is not None:
-            comments = comments.filter(post__id=post_id)
+        post = self.request.query_params.get('post_id', None)
+        if post is not None:
+            comments = comments.filter(post__id=post)
 
         serializer = CommentSerializer(
             comments, many=True, context={'request': request})
@@ -138,5 +138,5 @@ class CommentSerializer(serializers.ModelSerializer):
     """JSON serializer for comments"""
     class Meta:
         model = Comment
-        fields = ('id', 'post_id', 'author_id', 'content', 'created_on')
-        depth = 1
+        fields = ('id', 'post', 'author', 'content', 'created_on')
+        depth = 2
