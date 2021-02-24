@@ -108,6 +108,9 @@ class Posts(ViewSet):
             posts, many=True, context={'request': request})
         return Response(serializer.data)
 
+# class PostUserSerializer(serializers.ModelSerializer):
+#     """JSON serializer for post users related Django user"""
+
 class PostSerializer(serializers.ModelSerializer):
     """JSON serializer for posts
 
