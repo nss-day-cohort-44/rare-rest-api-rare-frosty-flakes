@@ -56,43 +56,29 @@ class Posts(ViewSet):
         except Exception as ex:
             return HttpResponseServerError(ex)
 
-    # def update(self, request, pk=None):
-    #     """Handle PUT requests for an event
+   
+    
+    def destroy(self, request, pk=None):
+        """Handle DELETE requests for a post
+            Created By: Jake Butler
+            Date: 2/24/21
+            Subject: Defines server response for deleting posts
+        
 
-    #     Returns:
-    #         Response -- Empty body with 204 status code
-    #     """
-    #     scheduler = Gamer.objects.get(user=request.auth.user)
+        Returns:
+            Response -- 200, 404, or 500 status code
+        """
+        try:
+            post = Post.objects.get(pk=pk)
+            post.delete()
 
-    #     event = Event.objects.get(pk=pk)
-    #     event.game = request.data["game"]
-    #     event.location = request.data["location"]
-    #     event.event_time = request.data["eventTime"]
-    #     event.scheduler = scheduler
+            return Response({}, status=status.HTTP_204_NO_CONTENT)
 
-    #     game = Game.objects.get(pk=request.data["gameId"])
-    #     event.game = game
-    #     event.save()
+        except Post.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
-    #     return Response({}, status=status.HTTP_204_NO_CONTENT)
-
-    # def destroy(self, request, pk=None):
-    #     """Handle DELETE requests for a single game
-
-    #     Returns:
-    #         Response -- 200, 404, or 500 status code
-    #     """
-    #     try:
-    #         event = Event.objects.get(pk=pk)
-    #         event.delete()
-
-    #         return Response({}, status=status.HTTP_204_NO_CONTENT)
-
-    #     except Event.DoesNotExist as ex:
-    #         return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
-
-    #     except Exception as ex:
-    #         return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+        except Exception as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
     def list(self, request):
         """Handle GET requests to post resource
