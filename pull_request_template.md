@@ -10,7 +10,7 @@ Please include a summary of the change and which issue is fixed. Please also inc
 - [ ] This change requires a documentation update
 
 # Testing Instructions
-`git fetch `
+`git fetch origin `
 `git checkout `
 `python3 manage.py runserver`
 
