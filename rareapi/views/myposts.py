@@ -11,8 +11,8 @@ class MyPosts(ViewSet):
     
     def list(self, request):
 
-        rare_user = RareUser.objects.get(user=request.quth.user)
-        posts = Post.objects.filter(posts__user = rare_user)
+        rare_user = RareUser.objects.get(user=request.auth.user)
+        posts = Post.objects.filter(user = rare_user)
 
         posts = PostSerializer(
             posts, many=True, context={'request': request}
@@ -20,14 +20,12 @@ class MyPosts(ViewSet):
         # rare_user = RareUserSerializer(
         #     rare_user, many=False, context={'request': request}
         # )
-        my_posts = {}
-        my_posts["posts"] = posts.data
+       
 
-class UserSerializer(serializers.ModelSerializer):
-    """JSON serializer for gamer's related Django user"""
-    class Meta:
-        model = User
-        fields = ('first_name', 'last_name', 'username')
+        # my_posts["rareuser"] = rare_user.data
+
+        return Response(posts.data)
+
 
 
 
