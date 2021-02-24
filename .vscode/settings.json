@@ -3,7 +3,6 @@
         {
             "previewLimit": 50,
             "driver": "SQLite",
-
             "name": "rare.db",
             "database": "db.sqlite3"
         }
