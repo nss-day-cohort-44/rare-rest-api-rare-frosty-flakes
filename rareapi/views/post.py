@@ -49,8 +49,15 @@ class Posts(ViewSet):
         Returns:
             Response -- JSON serialized game instance
         """
+        user = RareUser.objects.get(user=request.auth.user)
+
+
         try:
             post = Post.objects.get(pk=pk)
+            if user.id == post.user_id: 
+                post.is_current_user = True
+            else:
+                post.is_current_user = False
             serializer = PostSerializer(post, context={'request': request})
             return Response(serializer.data)
         except Exception as ex:
@@ -124,5 +131,5 @@ class PostSerializer(serializers.ModelSerializer):
     """
     class Meta:
         model = Post
-        fields = ('id', 'user',  'category', 'title', 'publication_date', 'image_url', 'content')
+        fields = ('id', 'user',  'category', 'title', 'publication_date', 'image_url', 'content', 'is_current_user')
         depth = 2

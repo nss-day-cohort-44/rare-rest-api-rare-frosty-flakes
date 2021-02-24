@@ -10,3 +10,12 @@ class Post(models.Model):
     image_url = models.CharField(max_length=512)
     content = models.CharField(max_length=150)
     approved = models.BooleanField()
+
+    @property
+    def is_current_user(self):
+
+        return self.__is_current_user
+
+    @is_current_user.setter
+    def is_current_user(self, value):
+        self.__is_current_user = value
